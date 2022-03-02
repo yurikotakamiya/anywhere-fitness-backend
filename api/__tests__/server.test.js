@@ -22,3 +22,35 @@ describe('server.js', () => {
     expect(process.env.NODE_ENV).toBe('testing')
   })
 })
+
+describe('[POST] api/user/register', () => {
+  test('decline invalid request', async () => {
+    const user = {username: 'testuser0',password: ''}
+    const result = await request(server).post('/api/user/register').send(user)
+    expect(result.body.status).toBe(500)
+    expect(result.body.message).toBe('must input username and password')
+  })
+  test('is correctly update the database for the user', async () => {
+    const user = {username: 'testuser0', password: '1234'}
+    const result = await request(server).post('/api/user/register').send(user)
+    expect(result.status).toBe(200)
+  })
+})
+
+describe('[POST] api/user/login', () => {
+  test('decline invalid input', async () => {
+    const user = {username: 'testuser0',password: ''}
+    const result = await request(server).post('/api/user/login').send(user)
+    expect(result.body.status).toBe(500)
+    expect(result.body.message).toBe('must input username and password')
+  })
+  test('getting back message with generated token when login', async () => {
+    const user = {username: 'testuser0', password: '1234'}
+    await request(server).post('/api/user/register').send(user)
+    
+    const result = await request(server).post('/api/user/login').send(user)
+    expect(result.status).toBe(200)
+    expect(result.body.message).toBe('Welcome testuser0')
+  })
+})
+
