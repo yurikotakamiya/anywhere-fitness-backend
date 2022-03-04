@@ -2,15 +2,15 @@
 [Deployed URL:](https://anywherefitness-0.herokuapp.com/)
 
 #### **Endpoints**
-- [] `[POST] /api/user/register` - username, password, isInstructor(optional)
-- [] `[POST] /api/user/login` - username, password
+- [ ] `[POST] /api/user/register` - username, password, isInstructor(optional)
+- [ ] `[POST] /api/user/login` - username, password
 
 ## Only users who have token can access
-- [] `[GET] /api/class/find_class ` 
-- [] `[POST] /api/class/find_class/search` 
-- [] `[POST] /api/class/create_class`
-- [] `[POST] /api/class/reserve_class`
-- [] `[POST] /api/class/attendees/:id`
+- [ ] `[GET] /api/class/find_class ` 
+- [ ] `[POST] /api/class/find_class/search` 
+- [ ] `[POST] /api/class/create_class`
+- [ ] `[POST] /api/class/reserve_class`
+- [ ] `[POST] /api/class/attendees/:id`
 
 #### **Users schema**
 | field        | data_type     | metadata                                                 |
